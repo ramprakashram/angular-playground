@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <form (ngSubmit)="onSubmit()" #formData="ngForm">
+        <div ngModelGroup="userData">
+          <div class="form-group">
+            <label for="userName">Username</label>
+            <input
+              type="text"
+              id="userName"
+              class="form-control"
+              ngModel
+              name="userName"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Mail</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              ngModel
+              name="email"
+              required
+              email
+              #emailDirective="ngModel"
+            />
+          </div>
+        </div>
+        <p *ngIf="emailDirective.invalid && emailDirective.touched">
+          Please enter a valid value!
+        </p>
+        <div class="form-group">
+          <label for="secret">Secret Question</label>
+          <select
+            id="secret"
+            class="form-control"
+            [ngModel]="'car'"
+            name="secret"
+          >
+            <option value="bike">Your First Bike ?</option>
+            <option value="car">Your First Car ?</option>
+            <option value="cycle">Your First Cycle ?</option>
+          </select>
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="!formData.valid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
