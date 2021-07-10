@@ -18,3 +18,8 @@ export const covidCountryListSelector = createSelector(
     covidStatSelector,
     (covid: CovidReducerState) => covid.countryList
 )
+
+export const selectUserSelectedCountry = createSelector(
+    covidStatSelector,
+    (covid: CovidReducerState) => covid.selectedCountry
+)

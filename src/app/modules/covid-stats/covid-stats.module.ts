@@ -7,14 +7,18 @@ import { CovidStatHeaderComponent } from './components/covid-stat-header/covid-s
 import { HttpClientModule } from '@angular/common/http';
 import { CovidStatCountrySummaryComponent } from './components/covid-stat-country-summary/covid-stat-country-summary.component';
 import { CovidStatCountryCardComponent } from './components/covid-stat-country-card/covid-stat-country-card.component';
+import { FilterCountryPipe } from './pipes/filter-country.pipe';
+import { FormsModule } from '@angular/forms';
+import { CovidCountryDetailViewComponent } from './components/covid-country-detail-view/covid-country-detail-view.component';
 
 
 @NgModule({
-  declarations: [CovidStatsComponent, CovidStatHeaderComponent, CovidStatCountrySummaryComponent, CovidStatCountryCardComponent],
+  declarations: [CovidStatsComponent, CovidStatHeaderComponent, CovidStatCountrySummaryComponent, CovidStatCountryCardComponent, FilterCountryPipe, CovidCountryDetailViewComponent],
   imports: [
     CommonModule,
     CovidStatsRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ]
 })
 export class CovidStatsModule { }

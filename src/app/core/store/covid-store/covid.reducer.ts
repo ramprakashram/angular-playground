@@ -1,15 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
 import { Country, Global, CovidModel } from '../../../models/covid-model';
-import { setCovidStats } from './covid.actions';
+import { setCovidStats, setSelectedCountry } from './covid.actions';
 
 export interface CovidReducerState {
     global: Global;
-    countryList: Array<Country>
+    countryList: Array<Country>;
+    selectedCountry: Country;
 }
 
 export const INITIAL_STATE: CovidReducerState = {
     global: new Global(),
-    countryList: []
+    countryList: [],
+    selectedCountry: null
 }
 
 export const covidReducer = createReducer(INITIAL_STATE,
@@ -18,6 +20,12 @@ export const covidReducer = createReducer(INITIAL_STATE,
             ...state,
             global: covidStatSummary.Global,
             countryList: covidStatSummary.Countries
+        }
+    }),
+    on(setSelectedCountry, (state, {selectedCountry}) => {
+        return {
+            ...state,
+            selectedCountry
         }
     })
 )
