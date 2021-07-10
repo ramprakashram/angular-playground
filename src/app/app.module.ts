@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { booksReducer } from './core/store/books-store/books.reducer';
 import { collectionsReducer } from './core/store/books-store/collections.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { collectionsReducer } from './core/store/books-store/collections.reducer
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     StoreModule.forRoot({
       books: booksReducer,
       collection: collectionsReducer

@@ -8,9 +8,13 @@ const routes: Routes = [
     loadChildren: () => import('./modules/forms/forms.module').then((m) => m.FormsPlayGroundModule)
   },
   {
+    path: 'books',
+    loadChildren: () => import('./modules/books-rxjs-poc/books-rxjs-poc.module').then((m) => m.BooksRxjsPocModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'forms'
+    redirectTo: 'books'
   }
 ];
 
