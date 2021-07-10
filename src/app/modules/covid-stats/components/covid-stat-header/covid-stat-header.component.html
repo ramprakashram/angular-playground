@@ -1,0 +1,26 @@
+<div class="covid-stat-header-wrapper" *ngIf="globalSummary$ | async; let globalSummary">
+  <div class="left-content display-1">COVID STATS</div>
+  <!-- <div class="right-content">
+          <span class="h3"> Confirmed : </span>
+          <span class="display-5"> {{ globalSummary.TotalConfirmed }}</span>
+          <span class="h3"> Deaths : </span>
+          <span class="display-5"> {{ globalSummary.TotalDeaths }}</span>
+          <span class="h3"> Recovered : </span>
+          <span class="display-5"> {{ globalSummary.TotalRecovered }}</span>
+  </div> -->
+
+  <div class="right-content">
+    <div>
+      <span class="status-title h3"> Confirmed : </span>
+      <span class="display-4"> {{ globalSummary.TotalConfirmed }}</span>
+    </div>
+    <div>
+      <span class="status-title h3"> Deaths : </span>
+      <span class="display-4"> {{ globalSummary.TotalDeaths }}</span>
+    </div>
+    <div>
+      <span class="status-title h3"> Recovered : </span>
+      <span class="display-4"> {{ globalSummary.TotalRecovered }}</span>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { booksReducer } from './core/store/books-store/books.reducer';
 import { collectionsReducer } from './core/store/books-store/collections.reducer';
+import { covidReducer } from './core/store/covid-store/covid.reducer';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     StoreModule.forRoot({
       books: booksReducer,
-      collection: collectionsReducer
+      collection: collectionsReducer,
+      covid: covidReducer
     }),
     NgbModule
   ],

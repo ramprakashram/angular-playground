@@ -1,0 +1,12 @@
+<div *ngIf="countryData" class="card text-dark bg-light mb-3" style="max-width: 18rem">
+  <div class="card-header">{{countryData.Country}}</div>
+  <div class="card-body">
+    <h5 class="card-title">Total: {{countryData.TotalConfirmed}}</h5>
+    <p class="card-text">
+        Recovered: {{countryData.TotalRecovered}}
+    </p>
+    <p class="card-text">
+        Death: {{countryData.TotalDeaths}}
+    </p>
+  </div>
+</div>

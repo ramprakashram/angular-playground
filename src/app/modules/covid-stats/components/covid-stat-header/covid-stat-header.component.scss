@@ -1,0 +1,28 @@
+.covid-stat-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid lightgray;
+
+    .left-content {
+        display: flex;
+        align-items: center;
+    }
+
+    .right-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            width: 420px;
+        }
+        .status-title {
+            display: flex;
+            align-items: center;
+            min-width: 160px;
+        }
+    }
+}

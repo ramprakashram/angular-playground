@@ -12,9 +12,13 @@ const routes: Routes = [
     loadChildren: () => import('./modules/books-rxjs-poc/books-rxjs-poc.module').then((m) => m.BooksRxjsPocModule)
   },
   {
+    path: 'covid-stats',
+    loadChildren: () => import('./modules/covid-stats/covid-stats.module').then((m) => m.CovidStatsModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'books'
+    redirectTo: 'covid-stats'
   }
 ];
 

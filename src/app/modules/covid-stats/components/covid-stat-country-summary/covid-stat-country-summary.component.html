@@ -1,0 +1,11 @@
+<div class="country-summary-wrapper">
+  <div class="country-list">
+    <ng-container *ngIf="countrySummary$ | async; let countrySummary">
+      <div *ngFor="let eachCountry of countrySummary">
+        <app-covid-stat-country-card
+          [countryData]="eachCountry"
+        ></app-covid-stat-country-card>
+      </div>
+    </ng-container>
+  </div>
+</div>
