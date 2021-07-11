@@ -10,15 +10,18 @@ import { CovidStatCountryCardComponent } from './components/covid-stat-country-c
 import { FilterCountryPipe } from './pipes/filter-country.pipe';
 import { FormsModule } from '@angular/forms';
 import { CovidCountryDetailViewComponent } from './components/covid-country-detail-view/covid-country-detail-view.component';
+import { HighchartsChartModule } from 'highcharts-angular';
+import { CovidCountryStatusLineChartComponent } from './components/covid-country-status-line-chart/covid-country-status-line-chart.component';
 
 
 @NgModule({
-  declarations: [CovidStatsComponent, CovidStatHeaderComponent, CovidStatCountrySummaryComponent, CovidStatCountryCardComponent, FilterCountryPipe, CovidCountryDetailViewComponent],
+  declarations: [CovidStatsComponent, CovidStatHeaderComponent, CovidStatCountrySummaryComponent, CovidStatCountryCardComponent, FilterCountryPipe, CovidCountryDetailViewComponent, CovidCountryStatusLineChartComponent],
   imports: [
     CommonModule,
     CovidStatsRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    HighchartsChartModule
   ]
 })
 export class CovidStatsModule { }

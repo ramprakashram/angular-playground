@@ -29,7 +29,7 @@ export class Global {
   TotalRecovered: number;
   Date: string;
 
-  constructor () {
+  constructor() {
     this.NewConfirmed = 0;
     this.TotalConfirmed = 0;
     this.NewDeaths = 0;
@@ -40,14 +40,14 @@ export class Global {
 }
 
 export interface CountryDetailModel {
-  Country:     string;
+  Country: string;
   CountryCode: string;
-  Province:    string;
-  City:        string;
-  CityCode:    string;
-  Lat:         string;
-  Lon:         string;
-  Cases:       number;
-  Status:      string;
-  Date:        string;
+  Province: string;
+  City: string;
+  CityCode: string;
+  Lat: string;
+  Lon: string;
+  Cases: number;
+  Status: string;
+  Date: string;
 }

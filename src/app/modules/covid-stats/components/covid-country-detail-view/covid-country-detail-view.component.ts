@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { forkJoin, Observable } from 'rxjs';
 import { selectUserSelectedCountry } from 'src/app/core/store/covid-store/covid.selectors';
-import { Country } from 'src/app/models/covid-model';
+import { Country, CountryDetailModel } from 'src/app/models/covid-model';
 import { CovidService } from '../../services/covid.service';
 
 @Component({
@@ -12,6 +13,8 @@ import { CovidService } from '../../services/covid.service';
 export class CovidCountryDetailViewComponent implements OnInit {
 
   selectedCountry: Country;
+  covidCaseStat$;
+
 
   constructor(private store: Store, private covidService: CovidService) { }
 
@@ -22,19 +25,24 @@ export class CovidCountryDetailViewComponent implements OnInit {
   getCountryDetails() {
     this.store.select(selectUserSelectedCountry)
       .subscribe((res) => {
-        console.log(res);
         if (res) {
           this.selectedCountry = res;
-          this.getCountryDataFromServer('confirmed');
+          this.getAllStatusFromServer()
         }
       })
   }
 
+  getAllStatusFromServer() {
+    console.log('inside')
+    this.covidCaseStat$ = forkJoin({
+      confirmed: this.getCountryDataFromServer('confirmed'),
+      recovered: this.getCountryDataFromServer('recovered'),
+      deaths: this.getCountryDataFromServer('deaths'),
+    });
+  }
+
   getCountryDataFromServer(status: string) {
-    this.covidService.getCountryCovidStatByStatus(this.selectedCountry.Slug, status)
-      .subscribe((res) => {
-        console.log(res);
-      })
+    return this.covidService.getCountryCovidStatByStatus(this.selectedCountry.Slug, status)
   }
 
 }

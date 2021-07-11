@@ -1,1 +1,30 @@
-<p>covid-country-detail-view works!</p>
+<div *ngIf="selectedCountry && covidCaseStat$ | async; let covidCaseStat; else noDataAvailable">
+  <ng-container *ngIf="covidCaseStat.confirmed; let confirmedCases">
+    <app-covid-country-status-line-chart
+      [chartTitle]="'Confirmed Cases'"
+      [covidCaseStat]="confirmedCases"
+    ></app-covid-country-status-line-chart>
+  </ng-container>
+  <ng-container *ngIf="covidCaseStat.recovered; let recoveredCases">
+    <app-covid-country-status-line-chart
+      [chartTitle]="'Recovered Cases'"
+      [covidCaseStat]="recoveredCases"
+    ></app-covid-country-status-line-chart>
+  </ng-container>
+  <ng-container *ngIf="covidCaseStat.deaths; let deathCases">
+    <app-covid-country-status-line-chart
+      [chartTitle]="'Death Cases'"
+      [covidCaseStat]="deathCases"
+    ></app-covid-country-status-line-chart>
+  </ng-container>
+</div>
+<ng-template #noDataAvailable>
+  <div class="no-data-available-wrapper">
+    No country is yet selected. Click below to go to summary page.
+    <div>
+      <button class="btn btn-primary" type="submit" routerLink="../">
+        Go To Summary
+      </button>
+    </div>
+  </div>
+</ng-template>
