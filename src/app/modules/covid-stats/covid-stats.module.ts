@@ -12,10 +12,11 @@ import { FormsModule } from '@angular/forms';
 import { CovidCountryDetailViewComponent } from './components/covid-country-detail-view/covid-country-detail-view.component';
 import { HighchartsChartModule } from 'highcharts-angular';
 import { CovidCountryStatusLineChartComponent } from './components/covid-country-status-line-chart/covid-country-status-line-chart.component';
+import { CovidStatPinnedCountriesComponent } from './components/covid-stat-pinned-countries/covid-stat-pinned-countries.component';
 
 
 @NgModule({
-  declarations: [CovidStatsComponent, CovidStatHeaderComponent, CovidStatCountrySummaryComponent, CovidStatCountryCardComponent, FilterCountryPipe, CovidCountryDetailViewComponent, CovidCountryStatusLineChartComponent],
+  declarations: [CovidStatsComponent, CovidStatHeaderComponent, CovidStatCountrySummaryComponent, CovidStatCountryCardComponent, FilterCountryPipe, CovidCountryDetailViewComponent, CovidCountryStatusLineChartComponent, CovidStatPinnedCountriesComponent],
   imports: [
     CommonModule,
     CovidStatsRoutingModule,

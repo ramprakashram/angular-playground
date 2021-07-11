@@ -18,6 +18,7 @@ export interface Country {
   NewRecovered: number;
   TotalRecovered: number;
   Date: string;
+  isPinned: boolean;
 }
 
 export class Global {

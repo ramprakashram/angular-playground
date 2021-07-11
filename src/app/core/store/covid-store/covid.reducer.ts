@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { Country, Global, CovidModel } from '../../../models/covid-model';
-import { setCovidStats, setSelectedCountry } from './covid.actions';
+import { setCovidStats, setSelectedCountry, updateCountryPinnedStatus } from './covid.actions';
 
 export interface CovidReducerState {
     global: Global;
@@ -22,10 +22,30 @@ export const covidReducer = createReducer(INITIAL_STATE,
             countryList: covidStatSummary.Countries
         }
     }),
-    on(setSelectedCountry, (state, {selectedCountry}) => {
+    on(setSelectedCountry, (state, { selectedCountry }) => {
         return {
             ...state,
             selectedCountry
+        }
+    }),
+    on(updateCountryPinnedStatus, (state, { status, countryId }) => {
+        if (countryId) {
+
+            return {
+                ...state,
+                countryList: state.countryList.map((eachCountry) => {
+                    if (eachCountry.ID === countryId) {
+                        return {
+                            ...eachCountry,
+                            isPinned: status
+                        }
+                    } else {
+                        return eachCountry
+                    }
+                })
+            }
+        } else {
+            return state;
         }
     })
 )

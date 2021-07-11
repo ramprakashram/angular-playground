@@ -1,0 +1,23 @@
+<div class="pinned-country-wrapper" [ngStyle]="{ left: customLeftPosition }">
+  <div class="pinned-country-toggle">
+    <span (click)="toggleSidePanel()">Pinned Countries</span>
+  </div>
+  <div class="pinned-country-content">
+    <div class="title">Pinned Countries</div>
+    <div
+      class="pinned-country-list"
+      *ngIf="(pinnedCountries$ | async)?.length > 0; else noPinnedCountries"
+    >
+      <div *ngFor="let eachCountry of pinnedCountries$ | async">
+        <app-covid-stat-country-card
+          [countryData]="eachCountry"
+          (click)="setSelectedCountry(eachCountry)"
+          (pinnedStatusToggled)="pinnedStatusToggled($event, eachCountry)"
+        ></app-covid-stat-country-card>
+      </div>
+    </div>
+    <ng-template #noPinnedCountries>
+      <div class="no-pinned-countries">Pinned Countries not Available</div>
+    </ng-template>
+  </div>
+</div>

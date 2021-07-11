@@ -10,3 +10,8 @@ export const setSelectedCountry = createAction(
     '[Covid Stats] Set User selected country',
     props<{ selectedCountry: Country }>()
 );
+
+export const updateCountryPinnedStatus = createAction(
+    '[Covid Stats] Updates pinned status of country',
+    props<{status: boolean, countryId: string}>()
+)

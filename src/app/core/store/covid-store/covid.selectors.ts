@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { Global } from "../../../models/covid-model";
+import { Country, Global } from "../../../models/covid-model";
 import { AppState } from '../../state/app.state';
 import { CovidReducerState } from "./covid.reducer";
 
@@ -22,4 +22,9 @@ export const covidCountryListSelector = createSelector(
 export const selectUserSelectedCountry = createSelector(
     covidStatSelector,
     (covid: CovidReducerState) => covid.selectedCountry
+)
+
+export const selectUserPinnedCountries = createSelector(
+    covidCountryListSelector,
+    (countryList: Array<Country>) => countryList.filter(e => e.isPinned)
 )

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { forkJoin, Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { selectUserSelectedCountry } from 'src/app/core/store/covid-store/covid.selectors';
 import { Country, CountryDetailModel } from 'src/app/models/covid-model';
 import { CovidService } from '../../services/covid.service';
@@ -14,9 +15,10 @@ export class CovidCountryDetailViewComponent implements OnInit {
 
   selectedCountry: Country;
   covidCaseStat$;
+  isFetchingDetails: boolean = false;
 
 
-  constructor(private store: Store, private covidService: CovidService) { }
+  constructor (private store: Store, private covidService: CovidService) { }
 
   ngOnInit(): void {
     this.getCountryDetails();
@@ -33,12 +35,14 @@ export class CovidCountryDetailViewComponent implements OnInit {
   }
 
   getAllStatusFromServer() {
-    console.log('inside')
+    this.isFetchingDetails = true;
     this.covidCaseStat$ = forkJoin({
       confirmed: this.getCountryDataFromServer('confirmed'),
       recovered: this.getCountryDataFromServer('recovered'),
       deaths: this.getCountryDataFromServer('deaths'),
-    });
+    }).pipe(finalize(() => {
+      this.isFetchingDetails = false
+    }))
   }
 
   getCountryDataFromServer(status: string) {

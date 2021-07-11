@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { setSelectedCountry } from 'src/app/core/store/covid-store/covid.actions';
+import { setSelectedCountry, updateCountryPinnedStatus } from 'src/app/core/store/covid-store/covid.actions';
 import { covidCountryListSelector } from 'src/app/core/store/covid-store/covid.selectors';
 import { Country } from 'src/app/models/covid-model';
 
@@ -17,7 +17,7 @@ export class CovidStatCountrySummaryComponent implements OnInit {
   countrySummary: Array<Country>;
   searchCountry: string;
 
-  constructor(private store: Store, private router: Router, private route: ActivatedRoute) { }
+  constructor (private store: Store, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.getCountrySummary()
@@ -25,7 +25,6 @@ export class CovidStatCountrySummaryComponent implements OnInit {
 
   getCountrySummary() {
     this.store.select(covidCountryListSelector).subscribe((res) => {
-      // console.log(res) 
       this.countrySummary = res;
     })
   }
@@ -37,6 +36,10 @@ export class CovidStatCountrySummaryComponent implements OnInit {
     ], {
       relativeTo: this.route
     })
+  }
+
+  pinnedStatusToggled(status: boolean, countryData: Country) {
+    this.store.dispatch(updateCountryPinnedStatus({ status, countryId: countryData.ID }))
   }
 
 }

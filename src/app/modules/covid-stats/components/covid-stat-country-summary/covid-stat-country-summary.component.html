@@ -19,6 +19,7 @@
       <app-covid-stat-country-card
         [countryData]="eachCountry"
         (click)="setSelectedCountry(eachCountry)"
+        (pinnedStatusToggled)="pinnedStatusToggled($event, eachCountry)"
       ></app-covid-stat-country-card>
     </div>
     <!-- </ng-container> -->

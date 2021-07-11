@@ -1,30 +1,69 @@
-<div *ngIf="selectedCountry && covidCaseStat$ | async; let covidCaseStat; else noDataAvailable">
-  <ng-container *ngIf="covidCaseStat.confirmed; let confirmedCases">
-    <app-covid-country-status-line-chart
-      [chartTitle]="'Confirmed Cases'"
-      [covidCaseStat]="confirmedCases"
-    ></app-covid-country-status-line-chart>
-  </ng-container>
-  <ng-container *ngIf="covidCaseStat.recovered; let recoveredCases">
-    <app-covid-country-status-line-chart
-      [chartTitle]="'Recovered Cases'"
-      [covidCaseStat]="recoveredCases"
-    ></app-covid-country-status-line-chart>
-  </ng-container>
-  <ng-container *ngIf="covidCaseStat.deaths; let deathCases">
-    <app-covid-country-status-line-chart
-      [chartTitle]="'Death Cases'"
-      [covidCaseStat]="deathCases"
-    ></app-covid-country-status-line-chart>
-  </ng-container>
+<div
+  class=""
+  *ngIf="
+    selectedCountry && covidCaseStat$ | async;
+    let covidCaseStat;
+    else: noDataAvailable
+  "
+>
+  <div class="country-name">{{ selectedCountry.Country }}</div>
+  <div class="detail-view-wrapper">
+    <ng-container *ngIf="covidCaseStat.confirmed; let confirmedCases">
+      <app-covid-country-status-line-chart
+        [chartTitle]="'Confirmed Cases'"
+        [covidCaseStat]="confirmedCases"
+      ></app-covid-country-status-line-chart>
+    </ng-container>
+    <ng-container *ngIf="covidCaseStat.recovered; let recoveredCases">
+      <app-covid-country-status-line-chart
+        [chartTitle]="'Recovered Cases'"
+        [covidCaseStat]="recoveredCases"
+      ></app-covid-country-status-line-chart>
+    </ng-container>
+    <ng-container *ngIf="covidCaseStat.deaths; let deathCases">
+      <app-covid-country-status-line-chart
+        [chartTitle]="'Death Cases'"
+        [covidCaseStat]="deathCases"
+      ></app-covid-country-status-line-chart>
+    </ng-container>
+  </div>
 </div>
 <ng-template #noDataAvailable>
-  <div class="no-data-available-wrapper">
-    No country is yet selected. Click below to go to summary page.
-    <div>
-      <button class="btn btn-primary" type="submit" routerLink="../">
-        Go To Summary
-      </button>
+  <div *ngIf="isFetchingDetails; else noDetails">
+    <div class="no-data-available-wrapper">
+      <div>
+        <div class="spinner-grow text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-secondary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-success" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-warning" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-info" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <div class="spinner-grow text-dark" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
     </div>
   </div>
+  <ng-template #noDetails>
+    <div class="no-data-available-wrapper">
+      No country is yet selected. Click below to go to summary page.
+      <div>
+        <button class="btn btn-primary" type="submit" routerLink="../">
+          Go To Summary
+        </button>
+      </div>
+    </div>
+  </ng-template>
 </ng-template>
