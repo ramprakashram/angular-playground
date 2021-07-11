@@ -15,7 +15,7 @@ export class CovidStatPinnedCountriesComponent implements OnInit {
 
   pinnedCountries$: Observable<Array<Country>> = this.store.select(selectUserPinnedCountries);
 
-  customLeftPosition: string = '100%';
+  customRightPosition: string = '-400px';
   // left: 73%;
 
   constructor(private store: Store, private router: Router, private route: ActivatedRoute) { }
@@ -24,7 +24,7 @@ export class CovidStatPinnedCountriesComponent implements OnInit {
   }
 
   toggleSidePanel() {
-    this.customLeftPosition = this.customLeftPosition === '100%' ? '73%' : '100%';
+    this.customRightPosition = this.customRightPosition === '-400px' ? '0' : '-400px';
   }
 
   setSelectedCountry(countryData: Country) {

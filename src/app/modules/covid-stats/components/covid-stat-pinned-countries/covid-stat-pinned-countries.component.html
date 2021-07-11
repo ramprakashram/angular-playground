@@ -1,6 +1,6 @@
-<div class="pinned-country-wrapper" [ngStyle]="{ left: customLeftPosition }">
+<div class="pinned-country-wrapper" [ngStyle]="{ right: customRightPosition }">
   <div class="pinned-country-toggle">
-    <span (click)="toggleSidePanel()">Pinned Countries</span>
+    <span (click)="toggleSidePanel()">Pinned Countries ({{(pinnedCountries$ | async)?.length}})</span>
   </div>
   <div class="pinned-country-content">
     <div class="title">Pinned Countries</div>
