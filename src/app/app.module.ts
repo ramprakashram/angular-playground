@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { StoreModule } from '@ngrx/store';
 import { booksReducer } from './core/store/books-store/books.reducer';
+import { CovidEffects } from './core/store/covid-store/covid.effects';
 import { collectionsReducer } from './core/store/books-store/collections.reducer';
 import { covidReducer } from './core/store/covid-store/covid.reducer';
 import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
       collection: collectionsReducer,
       covid: covidReducer
     }),
-    NgbModule
+    NgbModule,
+    EffectsModule.forRoot([CovidEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,10 @@
 import { createAction, props } from "@ngrx/store";
 import { Country, CovidModel } from "../../../models/covid-model";
 
+export const getCovidData = createAction(
+    '[Covid Stats] Get Covid Data from Server'
+)
+
 export const setCovidStats = createAction(
     '[Covid Stats] Set Covid Data to Store',
     props<{ covidStatSummary: CovidModel }>()

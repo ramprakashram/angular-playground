@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { setCovidStats } from 'src/app/core/store/covid-store/covid.actions';
+import { getCovidData, setCovidStats } from 'src/app/core/store/covid-store/covid.actions';
 import { CovidService } from './services/covid.service';
 
 @Component({
@@ -13,14 +13,15 @@ export class CovidStatsComponent implements OnInit {
   constructor (private covidService: CovidService, private store: Store) { }
 
   ngOnInit(): void {
-    this.getCovidStats();
+    // this.getCovidStats();
+    this.store.dispatch(getCovidData())
   }
 
-  getCovidStats() {
-    this.covidService.getCovidSummary()
-      .subscribe((covidStat) => {
-        this.store.dispatch(setCovidStats({ covidStatSummary: covidStat }))
-      })
-  }
+  // getCovidStats() {
+  //   this.covidService.getCovidSummary()
+  //     .subscribe((covidStat) => {
+  //       this.store.dispatch(setCovidStats({ covidStatSummary: covidStat }))
+  //     })
+  // }
 
 }
