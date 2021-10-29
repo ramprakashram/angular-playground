@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/covid-stats/covid-stats.module').then((m) => m.CovidStatsModule)
   },
   {
+    path: 'charts',
+    loadChildren: () => import('./modules/charts-poc/charts-poc.module').then((m) => m.ChartsPocModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'covid-stats'
