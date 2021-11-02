@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Chart, registerables } from 'chart.js';
 import { getRelativePosition } from 'chart.js/helpers';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-bubble-chart-chartjs-chart',
@@ -13,6 +14,7 @@ export class BubbleChartChartJSComponent implements OnInit {
   constructor(private titleService: Title) {
     this.titleService.setTitle('Bubble Chart - Chart.js');
     Chart.register(...registerables);
+    Chart.register(ChartDataLabels);
   }
 
   private canvasEl: any;
@@ -155,40 +157,34 @@ export class BubbleChartChartJSComponent implements OnInit {
     };
 
     const chartDataWithBubbleColors = {
-      labels: "Threats",
       datasets: [{
-        label: ["Threat1"],
-        backgroundColor: "red",
-        title: "dataTitle1",
+        backgroundColor: "green",
+        title: "AI: Deepfakes",
         data: [{
           x: 1,
           y: 0.2,
           r: 12
         }]
       }, {
-        label: ["Threat2"],
-        backgroundColor: "yellow",
-        title: "dataTitle2",
+        backgroundColor: "purple",
+        title: "AI: Economy",
         data: [{
           x: 1,
           y: 0.4,
           r: 8
         }]
       }, {
-        label: ["Threat3"],
-        backgroundColor: "blue",
-        title: "dataTitle3",
+        backgroundColor: "pink",
+        title: "AI: Jobs",
         data: [{
           x: 1,
           y: 0.6,
           r: 4
         }]
-      }, 
+      },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "purple",
+        title: "Biometrics",
         data: [{
           x: 1,
           y: 1.4,
@@ -196,10 +192,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "green",
+        title: "COVID-19 : Impact, Recovery and Prevention",
         data: [{
           x: 1,
           y: 1.6,
@@ -207,10 +201,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "pink",
+        title: "Satellites",
         data: [{
           x: 1,
           y: 2.4,
@@ -218,10 +210,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "purple",
+        title: "Darknet Materials",
         data: [{
           x: 2,
           y: 0.2,
@@ -229,10 +219,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "pink",
+        title: "Big Tech",
         data: [{
           x: 2,
           y: 0.4,
@@ -240,10 +228,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "purple",
+        title: "AI: Economy",
         data: [{
           x: 2,
           y: 0.6,
@@ -251,10 +237,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "pink",
+        title: "AI: Jobs",
         data: [{
           x: 2,
           y: 0.8,
@@ -262,10 +246,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "purple",
+        title: "Social Media",
         data: [{
           x: 2,
           y: 1.2,
@@ -273,9 +255,7 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
         backgroundColor: "black",
-        borderColor: "",
         title: "dataTitle4",
         data: [{
           x: 2,
@@ -284,10 +264,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "pink",
+        title: "Digital Literature",
         data: [{
           x: 3,
           y: 0.4,
@@ -295,10 +273,8 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "pink",
+        title: "COVID-19",
         data: [{
           x: 3,
           y: 0.6,
@@ -306,25 +282,43 @@ export class BubbleChartChartJSComponent implements OnInit {
         }]
       },
       {
-        label: ["Threat4"],
-        backgroundColor: "black",
-        borderColor: "",
-        title: "dataTitle4",
+        backgroundColor: "blue",
+        title: "AI: Deepfakes",
         data: [{
           x: 3,
           y: 1.4,
           r: 10
         }]
       },
-    ]
+      ]
     }
+
+    const chartPlugins = [];
+
 
     const chartOptions = {
       responsive: true,
       plugins: {
+        datalabels: {
+          color: 'red',
+          align: 'right',
+          offset: 16,
+          clamp: true,
+          anchor: 'center',
+          clip: true,
+          display: 'auto',
+          formatter: function (value, context) {
+            const trucateTitlePivot = 15;
+            const label = context.dataset.title.length < trucateTitlePivot ? context.dataset.title : context.dataset.title.substring(0, trucateTitlePivot) + '...'
+            return label;
+          }
+        },
         legend: {
           display: false
-        }
+        },
+        tooltip: {
+          enabled: false
+        },
       },
       scales: {
         x: {
