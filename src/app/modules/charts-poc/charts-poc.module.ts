@@ -2,12 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ChartsPocRoutingModule } from './charts-poc-routing.module';
-import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
+import { BubbleChartChartJSComponent } from './bubble-charts-poc/bubble-chart-chartjs/bubble-chart-chartjs.component';
+import { BubbleChartHighchartsComponent } from './bubble-charts-poc/bubble-chart-highcharts/bubble-chart-highcharts.component';
 
 
 @NgModule({
   declarations: [
-    BubbleChartComponent
+    BubbleChartChartJSComponent,
+    BubbleChartHighchartsComponent
   ],
   imports: [
     CommonModule,

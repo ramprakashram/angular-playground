@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BubbleChartComponent } from './bubble-chart.component';
+import { BubbleChartsPocComponent } from './bubble-charts-poc.component';
 
-describe('BubbleChartComponent', () => {
-  let component: BubbleChartComponent;
-  let fixture: ComponentFixture<BubbleChartComponent>;
+describe('BubbleChartsPocComponent', () => {
+  let component: BubbleChartsPocComponent;
+  let fixture: ComponentFixture<BubbleChartsPocComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BubbleChartComponent ]
+      declarations: [ BubbleChartsPocComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BubbleChartComponent);
+    fixture = TestBed.createComponent(BubbleChartsPocComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

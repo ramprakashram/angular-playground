@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { BubbleChartComponent } from './bubble-chart/bubble-chart.component';
+import { BubbleChartChartJSComponent } from './bubble-charts-poc/bubble-chart-chartjs/bubble-chart-chartjs.component';
 
 const routes: Routes = [
   {
     path: 'bubble',
-    component: BubbleChartComponent
+    loadChildren: () => import('./bubble-charts-poc/bubble-charts-poc.module').then((m) => m.BubbleChartsPocModule)
   },
   {
     path: '',
