@@ -20,6 +20,10 @@ const routes: Routes = [
     loadChildren: () => import('./modules/charts-poc/charts-poc.module').then((m) => m.ChartsPocModule)
   },
   {
+    path: 'd3',
+    loadChildren: () => import('./modules/d3-poc/d3-poc.module').then((m) => m.D3PocModule)
+  },
+  {
     path: '',
     pathMatch: 'full',
     redirectTo: 'covid-stats'
