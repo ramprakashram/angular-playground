@@ -47,6 +47,7 @@ export class D3CircleChartPocV2Component implements OnInit {
   cxCumulative = 0;
 
   ngOnInit(): void {
+    this.nodes = this.nodes.sort((a,b) =>b.Count - a.Count)
     this.createD3Scales();
   }
 
