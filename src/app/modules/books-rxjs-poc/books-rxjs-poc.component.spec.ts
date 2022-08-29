@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { BooksRxjsPocComponent } from './books-rxjs-poc.component';
 
@@ -6,7 +6,7 @@ describe('BooksRxjsPocComponent', () => {
   let component: BooksRxjsPocComponent;
   let fixture: ComponentFixture<BooksRxjsPocComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ BooksRxjsPocComponent ]
     })
